@@ -1,0 +1,36 @@
+version: '3'
+services:
+  db:
+    image: mysql
+    environment : 
+      - MYSQL_ROOT_PASSWORD=root
+      
+    volumes: 
+      - ./data:/var/lib/mysql
+    ports:
+      - 3307:3306
+      
+    networks:
+      - springmvc-mysql-net
+      
+  app:
+    image: springmvcapp
+    depends_on: 
+      - db
+    environment:
+      - jdbc.url=jdbc:mysql://db:3306/mvcdb?createDatabaseIfNotExist=true
+      - jdbc.username=root
+      - jdbc.password=root
+      
+    ports: 
+      - 8088:8080
+      
+    networks: 
+      - springmvc-mysql-net
+      
+      
+networks:
+  springmvc-mysql-net:
+  
+    
+    
