@@ -1,0 +1,28 @@
+pipeline{
+   agent any
+
+ stages{
+
+
+ stage('So  narQube analysis') {
+// def scannerHome = tool 'SonarScanner 4.0';
+ steps{
+
+
+
+
+sh """mvn clean verify sonar:sonar \
+  -Dsonar.projectKey=student-mvc-analysis \
+  -Dsonar.projectName='student-mvc-analysis' \
+  -Dsonar.host.url=http://34.148.53.129:9000 \
+  -Dsonar.token=sqp_f4d87b2d85fa7432e330f669d87985d888f8b287"""
+     
+  
+ }
+     
+
+ }
+     
+ }
+    
+}
