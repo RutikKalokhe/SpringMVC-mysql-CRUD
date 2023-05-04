@@ -4,7 +4,7 @@ pipeline{
  stages{
 
 
- stage('So  narQube analysis') {
+ stage('SonarQube analysis') {
 // def scannerHome = tool 'SonarScanner 4.0';
  steps{
 
